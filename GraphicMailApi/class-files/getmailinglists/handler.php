@@ -15,15 +15,17 @@ else {
 	
 	if ($res['mailinglist']['0']) {
 		// multiple rows
+		$i=0;
 		foreach ($res['mailinglist'] AS $d) {
-			$a[$d['mailinglistid']]['id']   = $d['mailinglistid'];
-			$a[$d['mailinglistid']]['name'] = $d['description'];
+			$a[$i]['id']   = $d['mailinglistid'];
+			$a[$i]['name'] = $d['description'];
+			$i++;
 		}
 	}
 	else if ($res['mailinglist']['mailinglistid']) {
 		// single result
-		$a[$res['mailinglist']['mailinglistid']]['id']   = $res['mailinglist']['mailinglistid'];
-		$a[$res['mailinglist']['mailinglistid']]['name'] = $res['mailinglist']['description'];
+		$a[0]['id']   = $res['mailinglist']['mailinglistid'];
+		$a[0]['name'] = $res['mailinglist']['description'];
 	}
 	else {
 		// no results
