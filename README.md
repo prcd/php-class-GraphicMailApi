@@ -16,3 +16,4 @@ See the [wiki](https://github.com/prcd/php-class-GraphicMailApi/wiki) for usage.
 * For some calls, the API will respond with a string if there are no records or an XML file if there are records.
 * The structure of the XML file changes depending on the number of results.
 * Sometimes errors are returned when a perfectly valid request has been made.
+* etc...
