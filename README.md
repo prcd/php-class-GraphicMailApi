@@ -4,6 +4,8 @@ If you are looking for an email solution I would recommend looking elsewhere.
 If you are forced to work with GraphicMail then I feel your pain.
 I wrote this class to reduce the number of times I want to throw my laptop out of the window - it seems to be working...
 
+See the [wiki](https://github.com/prcd/php-class-GraphicMailApi/wiki) for usage.
+
 ### Key features
 * Chat with GraphicMail’s API in a much more civilised way
 * Variables and key-words are now logically named
