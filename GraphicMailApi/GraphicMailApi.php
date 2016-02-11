@@ -339,11 +339,11 @@ class GraphicMailApi
 		
 		$time = microtime(true) - $start;
 		
-		$rtn['log']['api_url']          = $this->safeRequestUrl;
-		$rtn['log']['function_request'] = $this->functionNameOrig;
-		$rtn['log']['time']['api']      = $this->responseTime;
-		$rtn['log']['time']['script']   = $time - $this->responseTime;
-		$rtn['log']['time']['total']    = $time;
+		$rtn['log']['api_url']        = $this->safeRequestUrl;
+		$rtn['log']['function']       = $this->functionNameOrig;
+		$rtn['log']['time']['api']    = $this->responseTime;
+		$rtn['log']['time']['script'] = $time - $this->responseTime;
+		$rtn['log']['time']['total']  = $time;
 		
 		$rtn = $this->format($rtn);
 		
