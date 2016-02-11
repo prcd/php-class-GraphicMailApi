@@ -1,0 +1,36 @@
+<?php
+
+$this->createQueryParam('datasetid',     'DatasetID', true);
+$this->createQueryParam('url',           'FileUrl',   true);
+$this->createQueryParam('col1',          'Col1');
+$this->createQueryParam('col2',          'Col2');
+$this->createQueryParam('col3',          'Col3');
+$this->createQueryParam('col4',          'Col4');
+$this->createQueryParam('col5',          'Col5');
+$this->createQueryParam('col6',          'Col6');
+$this->createQueryParam('col7',          'Col7');
+$this->createQueryParam('col8',          'Col8');
+$this->createQueryParam('col9',          'Col9');
+$this->createQueryParam('col10',         'Col10');
+$this->createQueryParam('col11',         'Col11');
+$this->createQueryParam('col12',         'Col12');
+$this->createQueryParam('col13',         'Col13');
+$this->createQueryParam('col14',         'Col14');
+$this->createQueryParam('col15',         'Col15');
+$this->createQueryParam('col16',         'Col16');
+$this->createQueryParam('col17',         'Col17');
+$this->createQueryParam('col18',         'Col18');
+$this->createQueryParam('col19',         'Col19');
+$this->createQueryParam('col20',         'Col20');
+$this->createQueryParam('col21',         'Col21');
+$this->createQueryParam('col22',         'Col22');
+$this->createQueryParam('col23',         'Col23');
+$this->createQueryParam('col24',         'Col24');
+$this->createQueryParam('col25',         'Col25');
+$this->createQueryParam('emailcol',      'EmailCol');
+$this->createQueryParam('mobilecol',     'MobileCol');
+$this->createQueryParam('importmode',    'ImportMode');
+$this->createQueryParam('iscsv',         'IsCsv');
+$this->createQueryParam('mailinglistid', 'MailingListId');
+$this->createQueryParam('mobilelistid',  'MobileListId');
+$this->createQueryParam('sheetname',     'Sheetname');
