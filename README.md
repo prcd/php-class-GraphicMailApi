@@ -1,6 +1,6 @@
 # php-class-GraphicMailApi
 
-If you are looking for an email solution I would recommend looking elsewhere.
+If you are looking for an email solution I wouldn't recommend GraphicMail.
 If you are forced to work with GraphicMail then I feel your pain.
 I wrote this class to reduce the number of times I want to throw my laptop out of the window - it seems to be working...
 
