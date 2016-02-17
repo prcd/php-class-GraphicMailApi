@@ -1,7 +1,5 @@
 <?php
 
-// v1.1.0
-
 class GraphicMailApi
 {
 	/**
