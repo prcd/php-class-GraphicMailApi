@@ -1,7 +1,4 @@
 <?php
 
-// required
 $this->createQueryParam('name', 'NewMailinglist', true);
-
-// forced
-$this->createQueryParam(NULL, 'ReturnMailingListID', 'true');
+$this->createQueryParam(NULL,   'ReturnMailingListID', 'true');

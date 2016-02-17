@@ -1,6 +1,6 @@
 <?php
 
-// key   = Adjusted function name - full lowercase text, prefix 'post_' removed
+// key   = Adjusted function name - full lowercase text, no hyphens or underscores. If you enter 'functionname' the call() method will accept 'functionName', 'function_name', 'FunctionName' etc...
 // value = GraphicMail function name
 
 $functionList = array(
@@ -15,5 +15,6 @@ $functionList = array(
 	'importdataset'               => 'post_import_dataset',
 	'importmailinglist'           => 'post_import_mailinglist',
 	'insertdata'                  => 'post_insertdata',
+	'subscribe'                   => 'post_subscribe',
 	'unsubscribe'                 => 'post_unsubscribe',
 );
