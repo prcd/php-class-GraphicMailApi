@@ -14,6 +14,7 @@ $functionList = array(
 	'getmailinglists'             => 'get_mailinglists',
 	'importdataset'               => 'post_import_dataset',
 	'importmailinglist'           => 'post_import_mailinglist',
+	'importnewsletter'            => 'post_import_newsletter',
 	'insertdata'                  => 'post_insertdata',
 	'subscribe'                   => 'post_subscribe',
 	'unsubscribe'                 => 'post_unsubscribe',
