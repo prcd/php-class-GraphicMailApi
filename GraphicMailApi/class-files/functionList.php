@@ -6,6 +6,7 @@
 $functionList = array(
 	'copymailinglist'             => 'post_copy_mailinglist',
 	'createmailinglist'           => 'post_create_mailinglist',
+	'deleteemail'                 => 'post_delete_emailaddress',
 	'deletestatusfrommailinglist' => 'post_delete_status_from_mailinglist',
 	'getcredits'                  => 'get_all_credits',
 	'getsubscriberinfo'           => 'get_subscriber_info',
