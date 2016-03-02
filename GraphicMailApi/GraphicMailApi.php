@@ -342,7 +342,7 @@ class GraphicMailApi
 		$this->inputLeftOver();
 		
 		if ($this->debug == 'params') {
-			return $this->queryParams;
+			return json_decode(json_encode($this->queryParams));
 		}
 
 		$this->contactGraphicMail();
@@ -355,11 +355,12 @@ class GraphicMailApi
 		
 		$time = microtime(true) - $start;
 		
-		$rtn['log']['api_url']        = $this->safeRequestUrl;
-		$rtn['log']['function']       = $this->functionNameOrig;
-		$rtn['log']['time']['api']    = $this->responseTime;
-		$rtn['log']['time']['script'] = $time - $this->responseTime;
-		$rtn['log']['time']['total']  = $time;
+		$rtn['log']['api_url']         = $this->safeRequestUrl;
+		$rtn['log']['function']        = $this->functionNameOrig;
+		$rtn['log']['response_sample'] = substr($this->result,0,100);
+		$rtn['log']['time']['api']     = $this->responseTime;
+		$rtn['log']['time']['script']  = $time - $this->responseTime;
+		$rtn['log']['time']['total']   = $time;
 		
 		$rtn = $this->format($rtn);
 		
