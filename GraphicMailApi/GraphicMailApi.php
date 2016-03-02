@@ -10,12 +10,19 @@ class GraphicMailApi
 	private $apiUrl = 'https://www.graphicmail.co.uk/api.aspx?SID=6';
 	
 	/**
-	  * GraphicMail API account username.
-	  *
-	  * @var string
-	  */
-	private $username = NULL;
+	 * Return debug info or formatted response?
+	 *
+	 * @var string (params/response/off)
+	 */
+	private $debug = 'off';
 	
+	/**
+	 * GraphicMail API account username.
+	 *
+	 * @var string
+	 */
+	private $username = NULL;
+
 	/**
 	  * GraphicMail API account password.
 	  *
@@ -331,10 +338,18 @@ class GraphicMailApi
 			require $this->functionFolder.'params.php';
 		}
 		
+		if ($this->debug == 'params') {
+			return $this->format($this->inputParams);
+		}
+
 		$this->inputLeftOver();
 		
 		$this->contactGraphicMail();
-		
+
+		if ($this->debug == 'response') {
+			return $this->result;
+		}
+
 		require $this->functionFolder.'handler.php';
 		
 		$time = microtime(true) - $start;
@@ -350,6 +365,17 @@ class GraphicMailApi
 		return json_decode(json_encode($rtn));
 	}
 	
+	public function setDebug($option)
+	{
+		if (in_array($option, array('params', 'response', 'off'))) {
+			$this->debug = $option;
+			return true;
+		}
+		else {
+			throw new Exception ('Invalid return option requested ('.$option.')');
+		}
+	}
+
 	public function setFormat($option)
 	{
 		$allow = array(
