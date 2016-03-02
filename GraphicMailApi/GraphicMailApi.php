@@ -312,7 +312,8 @@ class GraphicMailApi
 		if ($input !== NULL && !is_array($input)) {
 			throw new Exception('Function input must be an array');
 		}
-		else if ($input !== NULL) {
+
+		if ($input !== NULL) {
 			foreach ($input as $k => $v) {
 				$k = str_replace(array('_','-'), '', $k);
 				$k = strtolower($k);
@@ -338,12 +339,12 @@ class GraphicMailApi
 			require $this->functionFolder.'params.php';
 		}
 		
-		if ($this->debug == 'params') {
-			return $this->format($this->inputParams);
-		}
-
 		$this->inputLeftOver();
 		
+		if ($this->debug == 'params') {
+			return $this->queryParams;
+		}
+
 		$this->contactGraphicMail();
 
 		if ($this->debug == 'response') {
