@@ -21,7 +21,8 @@ else {
 		// multiple rows
 		foreach ($res['email'] AS $d) {
 			$a[$d['emailid']]['id']            = $d['emailid'];
-			$a[$d['emailid']]['email_address'] = $d['emailaddress'];
+			$a[$d['emailid']]['email']         = $d['emailaddress'];
+			$a[$d['emailid']]['email_address'] = $d['emailaddress'];// for backwards compatibility
 			$a[$d['emailid']]['date']          = $d['date'];
 			$a[$d['emailid']]['status']        = $d['status'];
 			$a[$d['emailid']]['ip_address']    = $d['ip_address'];
@@ -30,7 +31,8 @@ else {
 	else if ($res['email']['emailid']) {
 		// single result
 		$a[$res['email']['emailid']]['id']            = $res['email']['emailid'];
-		$a[$res['email']['emailid']]['email_address'] = $res['email']['emailaddress'];
+		$a[$res['email']['emailid']]['email']         = $res['email']['emailaddress'];
+		$a[$res['email']['emailid']]['email_address'] = $res['email']['emailaddress'];// for backwards compatibility
 		$a[$res['email']['emailid']]['date']          = $res['email']['date'];
 		$a[$res['email']['emailid']]['status']        = $res['email']['status'];
 		$a[$res['email']['emailid']]['ip_address']    = $res['email']['ip_address'];
