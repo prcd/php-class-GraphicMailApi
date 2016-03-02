@@ -9,6 +9,7 @@ $functionList = array(
 	'deleteemail'                 => 'post_delete_emailaddress',
 	'deletestatusfrommailinglist' => 'post_delete_status_from_mailinglist',
 	'getcredits'                  => 'get_all_credits',
+	'getdataset'                  => 'get_dataset',
 	'getsubscriberinfo'           => 'get_subscriber_info',
 	'getimportqueuedataset'       => 'get_importqueue_dataset',
 	'getmailinglist'              => 'get_mailinglist',
