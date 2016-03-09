@@ -4,7 +4,7 @@ if ($this->result == '') {
 	$rtn['status']  = 'ERR';
 	$rtn['message'] = 'No response from GraphicMail';
 }
-else if ($this->result == '0|No Email specified, or invalid email') { // this string is also returned if the email does not exist in any mailing lists or datasets
+else if ($this->result == '0|No Email specified, or invalid email') { // this string is returned if the email does not exist in any mailing lists or datasets
 	$rtn['status'] = 'OK';
 	$rtn['data']['mailing_list'] = NULL;
 	$rtn['data']['dataset']      = NULL;
@@ -13,7 +13,7 @@ else if (substr($this->result, 0, 2) == '0|') {
 	$rtn['status']  = 'ERR';
 	$rtn['message'] = substr($this->result,2);
 }
-else {
+else if(substr($this->result, 0, 5) == '<?xml'){
 
 	$rtn['status'] = 'OK';
 
@@ -48,34 +48,38 @@ else {
 	// process dataset results
 	if ($res['datasets'] == 'None') {
 		// no results
-		$a['dataset'] = NULL;
+		$a['data_set'] = NULL;
 	}
 	else if ($res['datasets']['dataset']['datasetid']) {
 		// a single result
-		$a['dataset'][0]['id']            = $res['datasets']['dataset']['datasetid'];
-		$a['dataset'][0]['name']          = $res['datasets']['dataset']['datasetname'];
-		$a['dataset'][0]['last_saved']    = $res['datasets']['dataset']['lastsaved']; // eg 2/4/2016 8:58:14 AM
-		$a['dataset'][0]['mobile_number'] = $res['datasets']['dataset']['mobilenumber'] === array() ? '' : $res['datasets']['dataset']['mobilenumber'];
+		$a['data_set'][0]['id']            = $res['datasets']['dataset']['datasetid'];
+		$a['data_set'][0]['name']          = $res['datasets']['dataset']['datasetname'];
+		$a['data_set'][0]['last_saved']    = $res['datasets']['dataset']['lastsaved']; // eg 2/4/2016 8:58:14 AM
+		$a['data_set'][0]['mobile_number'] = $res['datasets']['dataset']['mobilenumber'] === array() ? '' : $res['datasets']['dataset']['mobilenumber'];
 		for ($i=1;$i<=25;$i++) {
-			$a['dataset'][0]['col'][$i]['name'] = $res['datasets']['dataset']['col'.$i]['colname'];
-			$a['dataset'][0]['col'][$i]['data'] = $res['datasets']['dataset']['col'.$i]['coldata'] === array() ? '' : $res['datasets']['dataset']['col'.$i]['coldata'];
+			$a['data_set'][0]['col_'.$i]['name']  = $res['datasets']['dataset']['col'.$i]['colname'];
+			$a['data_set'][0]['col_'.$i]['value'] = $res['datasets']['dataset']['col'.$i]['coldata'] === array() ? '' : $res['datasets']['dataset']['col'.$i]['coldata'];
 		}
 	}
 	else {
 		// multiple results
 		$d=0;
 		foreach ($res['datasets']['dataset'] as $data) {
-			$a['dataset'][$d]['id']            = $data['datasetid'];
-			$a['dataset'][$d]['name']          = $data['datasetname'];
-			$a['dataset'][$d]['last_saved']    = $data['lastsaved']; // eg 2/4/2016 8:58:14 AM
-			$a['dataset'][$d]['mobile_number'] = $data['mobilenumber'] === array() ? '' : $data['mobilenumber'];
+			$a['data_set'][$d]['id']            = $data['datasetid'];
+			$a['data_set'][$d]['name']          = $data['datasetname'];
+			$a['data_set'][$d]['last_saved']    = $data['lastsaved']; // eg 2/4/2016 8:58:14 AM
+			$a['data_set'][$d]['mobile_number'] = $data['mobilenumber'] === array() ? '' : $data['mobilenumber'];
 			for ($i = 1; $i <= 25; $i++) {
-				$a['dataset'][$d]['col'][$i]['name'] = $data['col' . $i]['colname'];
-				$a['dataset'][$d]['col'][$i]['data'] = $data['col' . $i]['coldata'] === array() ? '' : $data['col' . $i]['coldata'];
+				$a['data_set'][$d]['col_'.$i]['name']  = $data['col' . $i]['colname'];
+				$a['data_set'][$d]['col_'.$i]['value'] = $data['col' . $i]['coldata'] === array() ? '' : $data['col' . $i]['coldata'];
 			}
 			$d++;
 		}
 	}
 
 	$rtn['data'] = $a;
+}
+else {
+	$rtn['status']  = 'ERR';
+	$rtn['message'] = 'Unexpected response from GraphicMail';
 }
