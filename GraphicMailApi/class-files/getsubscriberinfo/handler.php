@@ -20,29 +20,33 @@ else if(substr($this->result, 0, 5) == '<?xml'){
 	$res = json_decode(json_encode(simplexml_load_string($this->result)),true);
 
 	// process mailing list results
-	if ($res['mailinglists'] == 'None') {
-		// no results
-		$a['mailing_list'] = NULL;
-	}
-	else if (isset($res['mailinglists']['mailinglist']['mailinglistid'])) {
+	$mailing_list = [];
+	if (isset($res['mailinglists']['mailinglist']['mailinglistid'])) {
 		// a single result
-		$a['mailing_list'][0]['id']     = $res['mailinglists']['mailinglist']['mailinglistid'];
-		$a['mailing_list'][0]['name']   = $res['mailinglists']['mailinglist']['mailinglistname'];
-		$a['mailing_list'][0]['email']  = $res['mailinglists']['mailinglist']['email'];
-		$a['mailing_list'][0]['status'] = $res['mailinglists']['mailinglist']['status'];
-		$a['mailing_list'][0]['date']   = $res['mailinglists']['mailinglist']['date']; // eg 11/02/2016 10:22, 23/10/2014 04:05
+		$mailing_list[0] = $res['mailinglists']['mailinglist'];
 	}
-	else {
+	else if (isset($res['mailinglists']['mailinglist'])){
 		// multiple results
+		$mailing_list = $res['mailinglists']['mailinglist'];
+	}
+
+	if (count($mailing_list)) {
 		$i=0;
-		foreach ($res['mailinglists']['mailinglist'] as $data) {
-			$a['mailing_list'][$i]['id']     = $data['mailinglistid'];
-			$a['mailing_list'][$i]['name']   = $data['mailinglistname'];
-			$a['mailing_list'][$i]['email']  = $data['email'];
-			$a['mailing_list'][$i]['status'] = $data['status'];
-			$a['mailing_list'][$i]['date']   = $data['date']; // eg 11/02/2016 10:22, 23/10/2014 04:05
-			$i++;
+		foreach ($mailing_list as $data) {
+			if (substr($data['mailinglistname'],0,8) != 'Deleted_') {// sometimes, when a subscriber is deleted from a list all details are returned but with mailing list name = 'Deleted_6_3_2_2016 10:14:06 AM'
+				$a['mailing_list'][$i]['id']     = $data['mailinglistid'];
+				$a['mailing_list'][$i]['name']   = $data['mailinglistname'];
+				$a['mailing_list'][$i]['email']  = $data['email'];
+				$a['mailing_list'][$i]['status'] = $data['status'];
+				$a['mailing_list'][$i]['date']   = $data['date']; // eg 11/02/2016 10:22, 23/10/2014 04:05
+				$i++;
+			}
 		}
+	}
+
+	// If no mailing lists recorded, set as NULL
+	if (! count($a['mailing_list'])) {
+		$a['mailing_list'] = NULL;
 	}
 
 	// process dataset results
