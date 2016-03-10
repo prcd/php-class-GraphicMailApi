@@ -6,7 +6,7 @@ if ($this->result == '') {
 }
 else if ($this->result == '0|Emailaddress does not exist in this dataset. ') {
 	$rtn['status'] = 'OK';
-	$rtn['data']['email_deleted'] = '0';
+	$rtn['data']['deleted'] = '0';
 }
 else if (substr($this->result, 0, 2) == '0|') {
 	$rtn['status']  = 'ERR';
@@ -14,7 +14,7 @@ else if (substr($this->result, 0, 2) == '0|') {
 }
 else if (substr($this->result, 0, 2) == '1|') {
 	$rtn['status'] = 'OK';
-	$rtn['data']['email_deleted'] = '1';
+	$rtn['data']['deleted'] = '1';
 }
 else {
 	$rtn['status']  = 'ERR';
