@@ -8,7 +8,7 @@ else if (substr($this->result, 0, 2) == '0|') {
 	$rtn['status']  = 'ERR';
 	$rtn['message'] = substr($this->result,2);
 }
-else {
+else if (substr($this->result, 0, 5) == '<?xml'){
 	$rtn['status'] = 'OK';
 
 	$res = json_decode(json_encode(simplexml_load_string($this->result)),true);
@@ -33,4 +33,8 @@ else {
 	}
 	
 	$rtn['data'] = $a;
+}
+else {
+	$rtn['status']  = 'ERR';
+	$rtn['message'] = 'Unexpected response from GraphicMail';
 }
