@@ -11,6 +11,7 @@ $functionList = array(
 	'deletefromdataset'           => 'post_delete_from_dataset',
 	'deleteemail'                 => 'post_delete_emailaddress',
 	'deletestatusfrommailinglist' => 'post_delete_status_from_mailinglist',
+	'deletesubaccount'            => 'post_delete_subaccount',
 	'getcredits'                  => 'get_all_credits',
 	'getdataset'                  => 'get_dataset',
 	'getdatasets'                 => 'get_datasets',
