@@ -4,6 +4,7 @@
 // value = GraphicMail function name
 
 $functionList = array(
+	'copydataset'                 => 'post_copy_dataset',
 	'copymailinglist'             => 'post_copy_mailinglist',
 	'createmailinglist'           => 'post_create_mailinglist',
 	'createsubaccount'            => 'post_create_subaccount',
@@ -12,15 +13,17 @@ $functionList = array(
 	'deletestatusfrommailinglist' => 'post_delete_status_from_mailinglist',
 	'getcredits'                  => 'get_all_credits',
 	'getdataset'                  => 'get_dataset',
-	'getsubaccountid'             => 'get_subaccountid',
-	'getsubscriberinfo'           => 'get_subscriber_info',
+	'getdatasets'                 => 'get_datasets',
 	'getimportqueuedataset'       => 'get_importqueue_dataset',
 	'getmailinglist'              => 'get_mailinglist',
 	'getmailinglists'             => 'get_mailinglists',
+	'getsubaccountid'             => 'get_subaccountid',
+	'getsubscriberinfo'           => 'get_subscriber_info',
 	'importdataset'               => 'post_import_dataset',
 	'importmailinglist'           => 'post_import_mailinglist',
 	'importnewsletter'            => 'post_import_newsletter',
 	'insertdata'                  => 'post_insertdata',
+	'renamedataset'               => 'post_rename_dataset',
 	'subscribe'                   => 'post_subscribe',
 	'unsubscribe'                 => 'post_unsubscribe',
 );
