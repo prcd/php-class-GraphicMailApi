@@ -8,13 +8,15 @@ else if (substr($this->result, 0, 2) == '0|') {
 	$rtn['status']  = 'ERR';
 	$rtn['message'] = substr($this->result,2);
 }
-else {
+else if (substr($this->result, 0, 2) == '1|') {
 	$rtn['status'] = 'OK';
-
-	if (substr($this->result,0,1) == '2') {
-		$rtn['data']['already_unsubscribed'] = '1';
-	}
-	else {
-		$rtn['data']['already_unsubscribed'] = '0';
-	}
+	$rtn['data']['already_unsubscribed'] = '0';
+}
+else if (substr($this->result, 0, 2) == '2|') {
+	$rtn['status'] = 'OK';
+	$rtn['data']['already_unsubscribed'] = '1';
+}
+else {
+	$rtn['status']  = 'ERR';
+	$rtn['message'] = 'Unexpected response from GraphicMail';
 }
