@@ -27,4 +27,5 @@ $functionList = array(
 	'renamedataset'               => 'post_rename_dataset',
 	'subscribe'                   => 'post_subscribe',
 	'unsubscribe'                 => 'post_unsubscribe',
+	'unsubscribeall'              => 'post_unsubscribe_all',
 );
