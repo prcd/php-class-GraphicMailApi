@@ -16,6 +16,7 @@ $functionList = array(
 	'getdataset'                  => 'get_dataset',
 	'getdatasets'                 => 'get_datasets',
 	'getimportqueuedataset'       => 'get_importqueue_dataset',
+	'getencryptedlogin'           => 'get_encrypted_login',
 	'getmailinglist'              => 'get_mailinglist',
 	'getmailinglists'             => 'get_mailinglists',
 	'getsubaccountid'             => 'get_subaccountid',
